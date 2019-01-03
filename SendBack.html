@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<p>
+    You are Participant B.
+<strong>Below are the listed allocations from the senders:</strong><br/>
+    {% for p in group.get_players %}
+    {% if 'sender' in p.role %}
+    <i>{{p.role}} sent you: {{p.sender_allocation}}</i><br/>
+    {% endif %}
+    {% endfor %}
+    Now you have {{tripled_amount}}.
+</p>
+
+{% formfield group.sender_id label="Which sender would you like to send money too?:" %}
+
+    {% formfield group.send_back_amount label=prompt %}
+    <p>{% next_button %}</p>
+    {% include Constants.instructions_template %}
+
+{% endblock %}
+
