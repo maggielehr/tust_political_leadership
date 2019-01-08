@@ -2,70 +2,77 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
+import random
 
-
-author = 'Your name here'
 
 doc = """
-Your app description
+One player, titled the decision maker, decides how much of a 100 point endowment to share between themselves
+and their partner, titled the receiver. The game will last two rounds and roles will reverse half way through. 
+
+
+
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'multilateral_trust'
-    players_per_group = 4
-    num_rounds = 3
+    name_in_url = 'dictator'
+    players_per_group = 2
+    num_rounds = 2
 
-    endowment = c(100)
-    multiplier = 3
+    instructions_template = 'dictator/Instructions.html'
 
-    instructions_template = 'multi_trust_simple/Instructions.html'
-
-    sender_choices = []
-    for i in range(1, players_per_group):
-        choice = [i, 'Redistribute to sender {}'.format(i)]
-        sender_choices.append(choice)
-
+    # Initial amount allocated to the dictator
+    endowment = 100
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        print('in creating_session', self.get_group_matrix(), self.round_number)
+        if self.round_number == 1:
+            self.group_randomly()
+            print("group is shuffled", self.get_group_matrix())
+        else:
+            self.group_like_round(1)
+            print("round 2", self.get_group_matrix())
 
 
 class Group(BaseGroup):
-
-    sender_id = models.IntegerField(
-        choices=Constants.sender_choices,
-        widget=widgets.RadioSelect,
-        doc="""0 means no purchase made"""
+    kept = models.CurrencyField(
+        doc="""Amount dictator decided to keep for himself""",
+        min=c(0), max=c(Constants.endowment),
     )
-    total_sender_allocation = models.CurrencyField()
-    allocated_amount = models.CurrencyField()
-    send_back_amount = models.CurrencyField(
-        doc="""Amount sent back by P2""",
-        min=c(0))
 
     def set_payoffs(self):
-        for p in self.get_players():
-            p.payoff = Constants.endowment
+        p1 = self.get_player_by_role('dictator')
+        p2 = self.get_player_by_role('receiver')
 
-        if self.sender_id != 0:
-            sender = self.get_player_by_id(self.sender_id)
-            distributor = self.get_player_by_role('distributor')
+        p1.payoff = 0
+        p2.payoff = 0
 
-            all_allocations = [p.sender_allocation for p in self.get_players()]
-            self.total_sender_allocation = sum(all_allocations[0:3])
-            self.allocated_amount = sender.sender_allocation
-            distributor.payoff += (self.total_sender_allocation * Constants.multiplier) - self.send_back_amount
-            sender.payoff += self.send_back_amount - self.allocated_amount
+        if
 
 
 class Player(BasePlayer):
-    sender_allocation = models.CurrencyField(min=0, max=Constants.endowment)
 
     def role(self):
-        if self.id_in_group == Constants.players_per_group:
-            return 'distributor'
-        return 'sender {}'.format(self.id_in_group)
+        if self.round_number == 1:
+            if self.id_in_group == Constants.players_per_group:
+                return 'receiver'
+            else:
+                return 'dictator'
+        else:
+            if self.id_in_group == Constants.players_per_group:
+                return 'dictator'
+            else:
+                return 'receiver'
 
+    def get_partner(self):
+        return self.get_others_in_group()[0]
+
+    submitted_answer1 = models.StringField(choices=['0', '1', '2', '3'], widget=widgets.RadioSelect)
+    submitted_answer2 = models.StringField(choices=['One randomly selected round',
+                                                    'The first round',
+                                                    'Both rounds'], widget=widgets.RadioSelect)
+    quiz1_correct = models.BooleanField()
+    quiz2_correct = models.BooleanField()
 
