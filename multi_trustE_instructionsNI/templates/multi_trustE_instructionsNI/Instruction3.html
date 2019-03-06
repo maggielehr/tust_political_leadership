@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Multilateral Distribution Task{% endblock %}
+
+{% block content %}
+
+        <p><strong><u>Earnings</u></strong></p>
+        Your earnings from this task will be from two randomly selected rounds.
+
+        <ul>
+        <li>The amount of points the distributor earns from the selected round is dependent on how many points
+            the distributors keep from  the senders' allocations.</li>
+        <li>The amount of points each sender earns is the points each sender began the round with and
+            did not sent to the distributor plus the amount sent to them by the distributor.
+            <ul><li>An additional 25 points if the sender's estimation of the amount returned from the distributor
+                was within 10 points of the actual amount of returned points.</li></ul></li>
+        <li>The monetary earnings from this round will be converted at a ratio of <b>25 points to $1.00 USD.</b>
+            Cash earnings will be rounded to the nearest US dollar. </li>
+        </ul>
+
+
+    <p>
+     Press "Next" to begin quiz
+    </p>
+
+{% next_button %}
+{% endblock %}

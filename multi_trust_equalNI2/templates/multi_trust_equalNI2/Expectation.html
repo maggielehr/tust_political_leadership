@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Sender Allocation
+{% endblock %}
+
+{% block content %}
+
+    <p>
+
+    </p>
+    <p>
+    The distributor in your group sent {{ altruism }} in the previous game to the receiver.<br>
+        For this game you have and endowment of {{Constants.endowment}}. <br><br>
+        <strong>How much will you send to the distributor?</strong>
+    </p>
+
+    {% formfield player.sender_allocation label="Please enter an amount from 0 to 100:" %}
+    <p>
+    {% next_button %}
+    </p>
+
+
+{% endblock %}

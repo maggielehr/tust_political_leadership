@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Multilateral Distribution Task{% endblock %}
+
+{% block content %}
+
+            <p>
+        <br>
+        The following multilateral distribution rounds will be structured as follows:
+
+        <ol>
+        <li>Each participant will begin the round with 100 points. Each sender will independently
+            decide how many of the points to send to the distributor. Each sender will also input the amount
+            of points they expect to be returned from the distributor. If this number is within 10 points they will earn
+            an additional 25 points for that round. </li>
+        <li>The distributor will receive triple the summation of the points sent by each sender.
+            For example, if each sender sends 2 points to the distributor, the distributor will receive 18 points.
+            The summation of the sent points is 6 and 6x3 = 18. </li>
+        <li>The distributor will decide how much of your available points you would like to keep for yourself </li>
+        <li>You will then decide how you would like to redistribute the remainder of the allocated points.
+            The distributor will see three boxes, the percentage of the remaining points the distributor
+            would like to return to each sender should be inputted into the corresponding box for each sender.
+            The total of these three boxes must equal 100% </li>
+        <li>All senders will be notified of the amount of points returned to them. Senders will also know how many points
+            the distributor kept. They will not know the amount of tokens returned to the other senders, nor the amount
+            sent by the other senders to the distributor at the beginning of the round. </li>
+        <li>At the end of the round a random number will be drawn between <b>one</b> and <b>three</b>.
+            <ul><li>If a one or two is drawn another round will be conducted with your same group repeating steps
+                1-4.</li>
+                <li>If a three is drawn groups will be reshuffled so that each player is placed
+                    randomly with three other participants. A random number generator will determine the
+                    single round from this group that is selected for payment. You will not know what number was
+                    selected for payment until all groups have completed play. </li></ul></li>
+
+        <li>After groups have been reshuffled steps 1-4 are repeated with the new group until a three is drawn again.
+            Each distributor will only play in the role of the distributor for one group. At
+            this point groups will be shuffled again and you will repeat steps 1-4 with your final group. </li>
+        <li>After the final group play has finished due to a random draw of the number 3, the round selected for
+            payment from each group will be displayed and your total take-home earnings will be calculated.
+            Your participation fee will be included in this value.
+        </ol>
+        </p>
+
+        <br><br>
+        Please note that each round is independent so points do not transfer between rounds.
+
+
+    <p>
+     Press "Next" to proceed to the next page
+    </p>
+
+{% next_button %}
+{% endblock %}

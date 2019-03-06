@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Bilateral Distribution Task{% endblock %}
+
+{% block content %}
+
+
+    <ul>
+    <li>At the beginning of the first round of this task you will be randomly assigned the role of
+        the decision maker or the role of the decision receiver.
+    <ol>
+      <li>The  decision maker begins the round with 100 points.
+          The decision maker then decides how many of these points to send to the decision receiver. The remaining
+          points are the payoff for the decision maker.
+      </li>
+      <li>The decision receiver begins the round with an endowment of zero points.
+          The decision receiver's payoff is the amount sent to them by the decision maker. </li>
+    </ol>
+    </li>
+    <li>The roles will be reversed for the second round and you will perform the action outlined in
+        either 1) or 2) with the same partner.
+    <ul>
+        <li>Before the second round begins and the roles reversed,
+            the decision receiver in the first round will not know how many points
+            were allocated to them by the decision maker in the first round</li>
+    </ul>
+    </li>
+    <li>After you have completed both rounds you will be
+        prompted to continue to the second task of this session.</li>
+    </ul>
+   <br><br>
+
+
+    <p>
+     Press "Next" to continue directions
+    </p>
+
+{% next_button %}
+{% endblock %}

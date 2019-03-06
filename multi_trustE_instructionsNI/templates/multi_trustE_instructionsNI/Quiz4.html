@@ -1,0 +1,11 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Question 4{% endblock %}
+
+{% block content %}
+
+{% formfield player.submitted_answer4 label=prompt %}
+
+{% next_button %}
+{% endblock %}

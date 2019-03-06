@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Trust Game: Your Choice
+{% endblock %}
+
+{% block content %}
+
+    {% include 'my_trust/Instructions.html' %}
+
+    <p>
+        You are Participant B.
+        Sender 1 sent you {{sender1.sender_send_amount}}
+        Sender 2 Sent you {{sender2.sender_send_amount}}
+        Sender 2 Sent you {{sender3.sender_send_amount}}
+        and you received {{tripled_amount}}.
+    </p>
+
+    {% formfield group.sender_id1 label="select a sender" %}
+    {% formfield group.send_back_amount1 label="How much do you want to send back?" %}
+    {% formfield group.sender_id2 label="select a sender" %}
+    {% formfield group.send_back_amount2 label="How much do you want to send back?" %}
+    {% formfield group.sender_id3 label="select a sender" %}
+    {% formfield group.send_back_amount3 label="How much do you want to send back?" %}
+
+    {% next_button %}
+
+{% endblock %}

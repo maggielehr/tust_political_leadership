@@ -1,0 +1,129 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Multilateral Distribution Task{% endblock %}
+
+{% block content %}
+
+  {% if player.role == 'distributor' %}
+    <p>
+    <strong>For the final task of this experiment you will:</strong>
+    <ul style="list-style-type:circle">
+    <li>Read these instructions.
+    </li>
+    <li>Answer a four-question quiz on these instructions. </li>
+    <li>Participate the multiple-round repeated multilateral distribution task.
+
+    </ul>
+    </p>
+<br><br>
+<p><strong><u>Multilateral Distribution Task</u></strong>
+<br>
+<br>
+    <p>
+    For the following task you will be placed in a group with three other subjects.
+    This group will remain the same for the rest of the task. You have been assigned the role of sender.
+    You will stay in this role for the remainder of the task. There will be two other senders, yourself,
+    and a distributor who will make decisions which will determine each subject’s final payout.
+    Each sender, including yourself, will be notified at the start of the of the multilateral distribution
+    task how much points the distributor sent to their partner in the bilateral distribution task.
+    The identity of the distributor will remain anonymous and you will only know this
+    value for the distributor in your group.
+    </p>
+
+    <p>
+<br>
+    The following multilateral distribution rounds will be structured as follows:
+
+    <ul>
+    <li>Each sender will begin the round with 100 points. They will each independently
+        decide how many of the points to send to you.
+        You begin the round with zero points. </li>
+    <li>You will receive triple the summation of the points sent by each sender.
+        For example, if each sender sends 2 points to you, you will receive 18 points. The summation of the
+        sent points is 6 and 6x3 = 18. </li>
+    <li>You will decide how much of the tripled sum of sent points you would like to keep.
+        You will then redistribute the remaining points available to you between the three senders. You
+        redistribute to each sender and how many points you would like to keep.
+         </li>
+    <li>All senders will be notified of the amount of points redistributed to them.
+        They do not know the amount kept by the distributor,
+        nor the amount of points redistributed to the other senders. </li>
+    <li>The round will end and a new round will begin. </li>
+    <li>When all the rounds are completed you will complete a post-experiment survey of two questions and payment
+        will be processed. </li>
+</ul>
+    </p>
+<p><strong><u>Earnings</u></strong></p>
+The amount that you earn will depend on the decisions you make and a random draw.
+You will be paid for each of the four parts as follows:
+<ul>
+    <li>Your take-home earnings will be from one randomly selected round in this game.
+        The actual earnings from this round will be converted at a ratio of 20 points to $1 USD.</li>
+</ul>
+
+    {% else %}
+  <p>
+    <strong>For the final task of this experiment you will:</strong>
+    <ul style="list-style-type:circle">
+    <li>Read these instructions.
+    </li>
+    <li>Answer a four-question quiz on these instructions. </li>
+    <li>Participate the multiple-round repeated multilateral distribution task.
+
+    </ul>
+    </p>
+<br><br>
+<p><strong><u>Multilateral Distribution Task</u></strong>
+<br>
+<br>
+    <p>
+    For the following task you will be placed in a group with three other subjects.
+    This group will remain the same for the rest of the task. You have been assigned the role of sender.
+    You will stay in this role for the remainder of the task. There will be two other senders, yourself,
+    and a distributor who will make decisions which will determine each subject’s final payout.
+    Each sender, including yourself, will be notified at the start of the of the multilateral distribution
+    task how much points the distributor sent to their partner in the bilateral distribution task.
+    The identity of the distributor will remain anonymous and you will only know this
+    value for the distributor in your group.
+    </p>
+
+    <p>
+<br>
+    The following multilateral distribution rounds will be structured as follows:
+
+    <ul>
+    <li>Each sender, including yourself, will receive an endowment of 100 pointss. You will each independently
+        decide how many of the points to allocate to the distributor.
+        The distributor’s initial endowment is zero points. </li>
+    <li>The distributor will receive the 3x the summation of each sender’s allocation. For example,
+        if each sender allocates 2 points to the distributor, 6 total points were allocated from the senders,
+        this number is tripled so the distributor will receive 18 points. </li>
+    <li>The distributor will decide how much of your total available points to redistribute to each sender and
+        how many points the distributor would like to keep. All of the distributor’s endowment must be kept or
+        redistributed but there is no other restriction on the token distribution.  </li>
+    <li>All senders will be notified of the amount of points redistributed to them.
+        They do not know the amount kept by the distributor,
+        nor the amount of points redistributed to the other senders.  </li>
+    <li>The round will end and a new round will begin. </li>
+    <li>When all the rounds are completed you will complete a post-experiment survey of two questions and payment
+        will be processed. </li>
+</ul>
+    </p>
+<p><strong><u>Earnings</u></strong></p>
+The amount that you earn will depend on the decisions you make and a random draw.
+You will be paid for each of the four parts as follows:
+<ul>
+    <li>Your take-home earnings will be from one randomly selected round in this game.
+        The actual earnings from this round will be converted at a ratio of 20 points to $1 USD.</li>
+</ul>
+
+
+    {% endif %}
+
+    <p>
+     Press "Next" to begin quiz
+    </p>
+
+{% next_button %}
+{% endblock %}

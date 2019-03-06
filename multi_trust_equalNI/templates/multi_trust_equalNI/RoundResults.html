@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Round Results
+{% endblock %}
+
+{% block content %}
+    <p>
+        You are {{ player.role }}.
+
+        {% if player.role == 'distributor' %}
+            You started with: {{ Constants.endowment }}
+            You received {{total_allocated}} from the senders <br>
+            Of this allocation you decided to keep {{group.kept_amount}}<br>
+            <strong>Therefore, your total earnings this round are {{ payoff }}</strong>
+        {% elif player.role == 'sender 1' %}
+            You started with {{ Constants.endowment }} <br>
+            You sent {{ sender_allocation }} to the distributor. <br>
+            This means that {{ sender_kept }} of your initial points remained <br><br>
+            The sender decided to keep {{ group.kept_amount}} <br>
+            Based on equal redistribution you received {{returned_sender}} from the distributor this round. <br>
+            You estimated you would be sent {{e_test}} points from the distributor. <br>
+            {{e_verdict}}<br><br><br>
+            <strong>Therefore, your total earnings this round are {{ payoff }}.</strong>
+
+        {% elif player.role == 'sender 2' %}
+
+            You started with: {{ Constants.endowment }} <br>
+            You sent: {{ sender_allocation }} to the distributor. <br>
+            This means that {{ sender_kept }} of your initial points remained <br><br>
+            The sender decided to keep {{ group.kept_amount}} <br>
+            Based on equal redistribution you received {{returned_sender}} from the distributor this round. <br>
+            You estimated you would be sent {{e_test}} points from the distributor. <br>
+            {{e_verdict}}<br><br><br>
+            <strong>Therefore, your total earnings this round are {{ payoff }}.</strong>
+
+        {% else %}
+             You started with {{ Constants.endowment }} <br>
+            You sent {{ sender_allocation }} to the distributor. <br>
+            This means that {{ sender_kept }} of your initial points remained <br><br>
+            The sender decided to keep {{ group.kept_amount}} <br>
+            Based on equal redistribution you received {{returned_sender}} from the distributor this round. <br>
+            You estimated you would be sent {{e_test}} points from the distributor. <br>
+            {{e_verdict}}<br><br><br>
+            <strong>Therefore, your total earnings this round are {{ payoff }}</strong>.
+        {% endif %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<p>
+    Your role for the remainder of the game is the roll of distributor.
+    <br>
+<strong>Below are the listed allocations from the senders:</strong><br/>
+    {% for p in group.get_players %}
+    {% if 'sender' in p.role %}
+    <i>{{p.role}} sent you: {{p.sender_allocation}}</i><br/>
+    {% endif %}
+    {% endfor %}
+    You kept an amount {{group.kept_amount}}. <br>
+    This leaves you {{remainder_allocation}} to distribute to the senders in your group.
+
+    How much would you like to send to Sender 1
+</p>
+
+    {% formfield group.send_back_amount1 label=prompt %}
+
+<p>How much would you like to send to sender 2</p>
+
+    {% formfield group.send_back_amount2 label=prompt %}
+
+<p>How much would you like to send to sender 3</p>
+
+    {% formfield group.send_back_amount3 label=prompt %}
+
+
+
+    <p>{% next_button %}</p>
+
+
+{% endblock %}
+
