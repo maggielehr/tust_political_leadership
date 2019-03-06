@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    <p>
+
+        {% if player.id_in_group == 1 %}
+            When you were the decision maker, you decided to keep <strong>{{kept1}}</strong> for yourself.<br>
+            When you were the decision receiver, the decision maker sent you <strong>{{sent2}}</strong><br>
+
+
+        {% else %}
+            When you were the decision maker, you decided to keep <strong>{{kept2}}</strong> for yourself.<br>
+            When you were the decision receiver, the decision maker sent you <strong>{{sent1}}</strong><br>
+        {% endif %}
+
+        <strong>Therefore, your take-home earnings for this task is {{ player.payoff }}</strong>
+
+
+
+        {% next_button %}
+    </p>
+
+{% endblock %}

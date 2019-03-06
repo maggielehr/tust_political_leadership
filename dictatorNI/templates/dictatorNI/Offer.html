@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Your Decision{% endblock %}
+
+{% block content %}
+<p>
+    Your role is the <strong>DECISION MAKER</strong> in this round.
+    Please decide how much of your 100 points to send to the decision receiver.
+    The remainder of your endowment will be kept as your payoff for the round.
+</p>
+
+{% formfield player.sent label="Please select an amount between 0 and 100 points to send: " %}
+
+{% next_button %}
+
+
+{% endblock %}
