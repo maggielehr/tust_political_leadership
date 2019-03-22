@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Sender Allocation
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    You are a sender. You begin the round with {{Constants.endowment}}.
+    </p>
+    <p>
+
+        <strong>How many of these points will you send to the distributor?</strong><br>
+        *remember that any amount a sender sends to the distributor will be summed and tripled before redistribution
+    </p>
+
+    {% formfield player.sender_allocation label="Please enter an amount from 0 to 100:" %}
+
+    <p>How may points do you expect to be returned from the distributor?</p>
+    {% formfield player.sender_expectation label="Please enter an amount from 0 to 900:" %}
+
+
+    <p>
+    {% next_button %}
+    </p>
+
+
+{% endblock %}

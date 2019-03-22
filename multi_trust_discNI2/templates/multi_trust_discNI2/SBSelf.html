@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Distributor Self Allocation
+{% endblock %}
+
+{% block content %}
+<p> You started the round with {{ Constants.endowment }}<br>
+<strong>Below are the listed allocations from the senders for this round:</strong><br/>
+    Sender 1 sent you: {{sent1}}
+    <br>
+    Sender 2 sent you: {{sent2}}
+    <br>
+    Sender 3 sent you: {{sent3}}
+    <br>That means you have a total of {{tripled_amount}} to distribute
+    <br><br>
+    {% formfield group.kept_amount label=prompt %}
+    <br><br>Remember that everything you don't keep you will redistribute to the senders on the next page.
+</p>
+</p>
+<p>{% next_button %}</p>
+
+
+{% endblock %}
+
+

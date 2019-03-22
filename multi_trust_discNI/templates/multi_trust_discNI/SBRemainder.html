@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<p>
+    Your role for the remainder of the game is the roll of distributor.
+    <br><br>
+Below are the listed allocations from the senders for this round:<br/>
+    Sender 1 sent you: {{sent1}}
+    <br>
+    Sender 2 sent you: {{sent2}}
+    <br>
+    Sender 3 sent you: {{sent3}}
+    <br>
+    You kept an amount {{group.kept_amount}}. <br><br>
+    <b>This leaves you {{remainder_allocation}} to distribute to the senders in your group.</b><br><br>
+
+    How much would you like to send to Sender 1
+</p>
+
+    {% formfield group.send_back_amount1 label=prompt %}
+
+<p>How much would you like to send to sender 2</p>
+
+    {% formfield group.send_back_amount2 label=prompt %}
+
+<p>How much would you like to send to sender 3</p>
+
+    {% formfield group.send_back_amount3 label=prompt %}
+
+
+
+    <p>{% next_button %}</p>
+
+
+{% endblock %}
+

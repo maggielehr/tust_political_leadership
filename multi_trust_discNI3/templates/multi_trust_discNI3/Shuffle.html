@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}New Group Assignment{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'distributor' %}
+
+        <p>
+        <br>
+            You have assigned the role of <u><b>distributor</b></u> for this <b>new</b> group assignment.<br>
+            As a reminder, the following multilateral distribution rounds will be structured as follows:<br>
+
+        <ol>
+        <li>Each sender will begin the round with 100 points. They will each independently
+            decide how many of the points to send to you.
+            You also begin the round with 100 points. </li>
+        <li>You will receive triple the summation of the points sent by each sender.
+            For example, if each sender sends 2 points to you, you will receive 18 points. The summation of the
+            sent points is 6 and 6x3 = 18. </li>
+        <li>You will decide how much of your available points you would like to keep for yourself </li>
+        <li>You will decide how many of the remaining points to return to each sender.</li>
+        <li>All senders will be notified of the amount of points you decided to return to them.
+            They will also know how many points
+            you kept. They will not know the amount of tokens returned to the other senders, nor the amount the other
+            senders sent to you. </li>
+         <li>There is a 25% chance the group is shuffled every round. This will be determined by a random
+            number draw after the round decisions have been completed.</li>
+        </ol>
+        </p>
+
+    {% else %}
+
+        <p>
+        <br>You have assigned the role of <u><b>sender</b></u> for this <b>new</b>  group assignment
+        The following multilateral distribution rounds will be structured as follows:
+
+        <ol>
+        <li>Each sender, including yourself, will begin the round with 100 points. You will each independently
+            decide how many of these points to send to the distributor.
+            The distributor will also begin the round with 100 points. </li>
+
+        <li>You will be asked to estimate how many points you expect will be returned to you by the distributor. </li>
+
+        <li>The distributor will receive triple the sum of all of points sent by the senders. For example,
+            if each sender allocates 2 points to the distributor, 6 total points were sent by the senders.
+            This number is then tripled so the distributor will receive 18 points </li>
+
+        <li>The distributor will decide how much of the allocated points to keep. Then the distributor will
+            decide how many points to give back to each sender. </li>
+
+        <li>All senders will be notified of the amount of points the distributor decided to return to them.
+            If the sender's estimation is within 10 points of the actual returned amount of points
+            they may receive 20 extra points for their payoff in that round.
+        <ul>
+            <li>You will know the amount of money kept by the distributor,  but you will not know the amount of points
+            distributed to the other senders, nor the amount of points allocated to the distributor by the senders</li>
+        </ul>
+        </li>
+        <li>There is a 25% chance the group is shuffled every round. This will be determined by a random
+            number draw after the round decisions have been completed.</li>
+        </ol>
+        <br><br>
+        Please note that each round is independent so points do not transfer between rounds.
+        </p>
+
+    {% endif %}
+
+    <p>
+        Press "Next" to proceed to the next page
+    </p>
+
+{% next_button %}
+{% endblock %}
