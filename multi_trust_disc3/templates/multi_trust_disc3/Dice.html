@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Random Number Draw
+{% endblock %}
+
+{% block content %}
+
+    {% if subsession.dice == 3 %}
+        <p>
+            The random number drawn this round was a <b>{{ dice }}</b>.
+            This means the task is now over. Please press next proceed to payment information and a post-experiment survey.
+
+        </p>
+    {% else %}
+        <p>
+            The random number drawn this round was a <b>{{ dice }}</b> so
+            this game will have another round with your currently
+            assigned group. Please press next to begin this round.
+
+        </p>
+
+    {% endif %}
+
+
+
+    <p>{% next_button %}</p>
+
+{% endblock %}

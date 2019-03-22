@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+    <p>
+        The round selected for payment for the first group was round {{paying_round1}}. <br>
+        The round selected for payment for the second group was round {{paying_round2}} <br>
+        The round selected for payment for the third group was round {{paying_round3}} <br>
+
+        <strong><u>Your total earnings for today's experiment, including the show-up fee, is {{payment}}</u></strong>
+
+    </p>
+    <p>
+        Please press "Next" to proceed to the post-experiment survey.
+    {% next_button %}
+    </p>
+
+
+{% endblock %}
+

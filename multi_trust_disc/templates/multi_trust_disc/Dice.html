@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Random Number Draw
+{% endblock %}
+
+{% block content %}
+
+    {% if subsession.dice == 3 %}
+        <p>
+            The random number drawn this round was a <b>{{ dice }}</b>.
+            This means you will now be placed in a randomized new group with new roles. <br><br>Please not that
+            each player can only be assigned the role of distributor once, so you are guaranteed to be placed with a
+            new distributor.
+
+        </p>
+    {% else %}
+        <p>
+            The random number drawn this round was a <b>{{ dice }}</b> so
+            this game will have another round with your currently
+            assigned group. Please press next to begin this round.
+
+        </p>
+
+    {% endif %}
+
+
+
+    <p>{% next_button %}</p>
+
+{% endblock %}

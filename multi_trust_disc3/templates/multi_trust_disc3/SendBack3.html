@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+<p>
+    You are Participant B.
+<strong>Below are the listed allocations from the senders:</strong><br/>
+    {% for p in group.get_players %}
+    {% if 'sender' in p.role %}
+    <i>{{p.role}} sent you: {{p.sender_allocation}}</i><br/>
+    {% endif %}
+    {% endfor %}
+    You sent {{group.send_back_amount1}} to player 1
+    You sent {{group.send_back_amount2}} to player 2
+    Now you have {{allocate_three}}.
+
+    How much would you like to send to sender 3</p>
+
+    {% formfield group.send_back_amount3 label=prompt %}
+
+    <p>{% next_button %}</p>
+    {% include Constants.instructions_template %}
+
+{% endblock %}
