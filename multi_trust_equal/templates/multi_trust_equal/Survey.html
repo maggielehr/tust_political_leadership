@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Thank you for participation this experiment. Please fill out the following survey and press the "Next" button
+        to indicate you have completed today's experiment.
+
+    </p>
+    <p>
+    {% formfield player.survey1 label="Please indicate your gender" %}
+    </p>
+
+    <p>
+    {% formfield player.survey2 label="What is your major?" %}
+    </p>
+
+    <p>
+    {% formfield player.survey2 label="Is there anything from this experiment that you did not understand?" %}
+    </p>
+
+    <p>
+    {% next_button %}
+    </p>
+
+
+{% endblock %}
